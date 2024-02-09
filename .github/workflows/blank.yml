@@ -34,4 +34,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo $YOUR_BASE64_ENV_VAR | base64 --decode | jq > gcp-credentials.json
-          echo hello
+          cat gcp-credentials.json
