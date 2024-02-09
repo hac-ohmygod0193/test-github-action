@@ -2,7 +2,7 @@
 
 name: CI
 env:
-  hello: SGVsbG8gV29ybGQhCg==
+  BASE64_gmail_token: ${{ secrets.BASE64_gmail_token }}
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -28,10 +28,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "SGVsbG8gV29ybGQhCg==" | base64 --decode
+        run: echo $BASE64_gmail_token
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo $hello | base64 --decode > gcp-credentials.json
+          echo $BASE64_gmail_token | base64 --decode > gcp-credentials.json
           cat gcp-credentials.json
